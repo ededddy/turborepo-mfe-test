@@ -1,0 +1,22 @@
+{
+    "name": "@repo/constants",
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "check-types": "tsc --noEmit",
+        "lint": "eslint . --max-warnings 0"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/constants.d.ts",
+            "default": "./dist/constants.js"
+        }
+    },
+    "devDependencies": {
+        "@repo/typescript-config": "workspace:*",
+        "@repo/eslint-config": "workspace:*",
+        "eslint": "^9.39.2",
+        "typescript": "latest"
+    }
+}

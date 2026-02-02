@@ -1,0 +1,20 @@
+{
+    "extends": [
+        "@repo/typescript-config/base.json"
+    ],
+    "compilerOptions": {
+        "baseUrl": "./",
+        "rootDir": "./",
+        "strict": true,
+        "jsx": "react-jsx",
+        "jsxImportSource": "hono/jsx",
+        "paths": {
+            "@api/*": [
+                "./src/*"
+            ]
+        },
+        "types": [
+            "@types/bun"
+        ]
+    }
+}
