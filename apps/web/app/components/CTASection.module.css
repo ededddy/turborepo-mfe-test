@@ -1,0 +1,195 @@
+.ctaSection {
+  position: relative;
+  padding: var(--space-3xl) 0;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.15) 0%,
+    rgba(249, 115, 22, 0.1) 50%,
+    rgba(16, 185, 129, 0.15) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+  border-top: 2px solid var(--color-border);
+  border-bottom: 2px solid var(--color-border);
+  overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.ctaContent {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.ctaTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  color: var(--color-fg);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.ctaDescription {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--color-muted);
+  margin: 0 0 var(--space-xl) 0;
+}
+
+.ctaButtons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .ctaButtons {
+    flex-direction: row;
+    gap: var(--space-md);
+  }
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-xl);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border: 2px solid;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.ctaButtonPrimary {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.ctaButtonPrimary:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-xl);
+  background: var(--color-primary);
+}
+
+.ctaButtonSecondary {
+  background: transparent;
+  color: var(--color-fg);
+  border-color: var(--color-border);
+}
+
+.ctaButtonSecondary:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-xl);
+  background: var(--color-card-bg);
+  border-color: var(--color-fg);
+}
+
+/* Decorative Elements */
+.ctaDecoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.decorationCircle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.1;
+}
+
+.decorationCircle1 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-primary);
+  top: -100px;
+  left: -100px;
+  animation: float 20s ease-in-out infinite;
+}
+
+.decorationCircle2 {
+  width: 200px;
+  height: 200px;
+  background: var(--color-secondary);
+  bottom: -50px;
+  right: -50px;
+  animation: float 15s ease-in-out infinite reverse;
+}
+
+.decorationCircle3 {
+  width: 150px;
+  height: 150px;
+  background: var(--color-accent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: float 18s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ctaSection {
+    padding: var(--space-2xl) 0;
+  }
+
+  .ctaButton {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .decorationCircle1 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .decorationCircle2 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .decorationCircle3 {
+    width: 100px;
+    height: 100px;
+  }
+}

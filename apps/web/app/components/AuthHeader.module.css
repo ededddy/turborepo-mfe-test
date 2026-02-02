@@ -1,0 +1,325 @@
+.authHeader {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) 0;
+  gap: var(--space-md);
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-fg);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.logo:hover {
+  transform: translate(-2px, -2px);
+}
+
+.logoText {
+  color: var(--color-primary);
+}
+
+.logoDot {
+  color: var(--color-secondary);
+}
+
+/* Desktop Navigation */
+.navDesktop {
+  display: none;
+  gap: var(--space-lg);
+}
+
+.navLink {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transition: width 0.2s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .navDesktop {
+    display: flex;
+  }
+}
+
+/* Auth Buttons */
+.authButtons {
+  display: none;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .authButtons {
+    display: flex;
+  }
+}
+
+.btn {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btnPrimary {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.btnPrimary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--color-fg);
+  border-color: var(--color-border);
+}
+
+.btnSecondary:hover {
+  background: var(--color-card-bg);
+  border-color: var(--color-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* User Menu */
+.userMenu {
+  position: relative;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .userMenu {
+    display: block;
+  }
+}
+
+.userMenuButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-card-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.userMenuButton:hover {
+  border-color: var(--color-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.userAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary);
+  color: white;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+.userName {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-fg);
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* Dropdown Menu */
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background: var(--color-card-bg);
+  border: 2px solid var(--color-border);
+  border-radius: 0;
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-fg);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background: var(--color-input-bg);
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: var(--color-border);
+  margin: var(--space-xs) 0;
+}
+
+/* Loading Spinner */
+.loadingSpinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--color-primary);
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile Menu Toggle */
+.mobileMenuToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs);
+  background: transparent;
+  border: 2px solid var(--color-border);
+  border-radius: 0;
+  cursor: pointer;
+  color: var(--color-fg);
+  transition: all 0.2s ease;
+}
+
+.mobileMenuToggle:hover {
+  border-color: var(--color-primary);
+  background: var(--color-card-bg);
+}
+
+@media (min-width: 768px) {
+  .mobileMenuToggle {
+    display: none;
+  }
+}
+
+/* Mobile Navigation */
+.navMobile {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobileNavLink {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-fg);
+  text-decoration: none;
+  padding: var(--space-sm) 0;
+  transition: color 0.2s ease;
+}
+
+.mobileNavLink:hover {
+  color: var(--color-primary);
+}
+
+.mobileNavButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
