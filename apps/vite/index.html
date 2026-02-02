@@ -4,9 +4,71 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+
+    <!-- Critical CSS to prevent FOUC -->
+    <style>
+      /* Set background immediately to prevent white flash */
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #0a0a0a; /* Fallback background */
+        color: #ededed;
+      }
+
+      /* Allow gradient background to show through */
+      #root {
+        position: relative;
+        z-index: 1;
+        opacity: 1;
+        min-height: 100vh;
+      }
+
+      /* Loading state before React hydrates */
+      body.loading #root {
+        opacity: 0;
+      }
+
+      body.loading::after {
+        content: "Loading...";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.875rem;
+        color: #737373;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        z-index: 9999;
+      }
+    </style>
+
+    <!-- Primary Meta Tags -->
+    <title>Admin Dashboard | MFE Portal</title>
+    <meta name="title" content="Admin Dashboard | MFE Portal" />
+    <meta name="description" content="Secure admin dashboard for microfrontend management. Access deployment monitoring, performance analytics, and team collaboration tools." />
+    <meta name="application-name" content="MFE Admin Dashboard" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Admin Dashboard | MFE Portal" />
+    <meta property="og:description" content="Secure admin dashboard for microfrontend management. Access deployment monitoring, performance analytics, and team collaboration tools." />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="Admin Dashboard | MFE Portal" />
+    <meta property="twitter:description" content="Secure admin dashboard for microfrontend management. Access deployment monitoring, performance analytics, and team collaboration tools." />
+
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Google Fonts: Syne (Display) and IBM Plex Mono (Monospace) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="loading">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

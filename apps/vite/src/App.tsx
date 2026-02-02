@@ -1,29 +1,48 @@
-import { Link } from "react-router-dom";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { useEffect } from "react"
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom"
+import { RootLayout } from "./components/RootLayout"
+import { ProtectedRoute } from "./components/ProtectedRoute"
+import { Dashboard } from "./pages/Dashboard"
 
-function App() {
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React on localhost:3002</h1>
-      <p style={{ fontSize: 24 }}>But you're looking at localhost:3024 🤩</p>
-      <div style={{ marginTop: "2rem" }}>
-        <Link to="/admin/nested">Go to /thing/nested page</Link>
-      </div>
-      <div style={{ marginTop: "2rem" }}>
-        <a href="/">Go to Next.js app</a>
-      </div>
-    </>
-  );
+/**
+ * Root App Component
+ *
+ * Removes loading class from body when React mounts to prevent FOUC.
+ * Uses data router (createBrowserRouter) to enable useNavigation hook.
+ */
+export default function App() {
+  useEffect(() => {
+    // Remove loading class when React mounts
+    document.body.classList.remove("loading")
+  }, [])
+
+  // Create data router to enable useNavigation hook
+  const router = createBrowserRouter([
+    {
+      element: <RootLayout />,
+      children: [
+        // Redirect /admin to /admin/dashboard
+        {
+          path: "/admin",
+          element: <Navigate to="/admin/dashboard" replace />
+        },
+        // Protected Dashboard Route
+        {
+          path: "/admin/dashboard",
+          element: (
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          )
+        },
+        // Catch all - redirect to dashboard
+        {
+          path: "*",
+          element: <Navigate to="/admin/dashboard" replace />
+        }
+      ]
+    }
+  ])
+
+  return <RouterProvider router={router} />
 }
-
-export default App;
