@@ -1,34 +1,56 @@
 {
-  "$schema": "https://turborepo.dev/microfrontends/schema.json",
-  "applications": {
-    "web": {
-      "development": {
-        "local": {
-          "port": 3000
+    "$schema": "https://turborepo.dev/microfrontends/schema.json",
+    "applications": {
+        "api": {
+            "development": {
+                "local": {
+                    "port": 3003
+                }
+            },
+            "routing": [
+                {
+                    "paths": [
+                        "/api",
+                        "/api/",
+                        "/api/:path*"
+                    ]
+                }
+            ]
+        },
+        "web": {
+            "development": {
+                "local": {
+                    "port": 3000
+                }
+            }
+        },
+        "docs": {
+            "development": {
+                "local": 3001
+            },
+            "routing": [
+                {
+                    "paths": [
+                        "/docs",
+                        "/docs/:path*"
+                    ]
+                }
+            ]
+        },
+        "admin": {
+            "development": {
+                "local": {
+                    "port": 3002
+                }
+            },
+            "routing": [
+                {
+                    "paths": [
+                        "/admin",
+                        "/admin/:path*"
+                    ]
+                }
+            ]
         }
-      }
-    },
-    "docs": {
-      "development": {
-        "local": 3001
-      },
-      "routing": [
-        {
-          "paths": ["/docs/:path*"]
-        }
-      ]
-    },
-    "admin": {
-      "development": {
-        "local": {
-          "port": 3002
-        }
-      },
-      "routing": [
-        {
-          "paths": ["/admin/:path*"]
-        }
-      ]
     }
-  }
 }
