@@ -7,13 +7,13 @@
         "dev": "next dev --port $(turbo get-mfe-port)",
         "build": "next build",
         "start": "next start",
-        "lint": "eslint --max-warnings 0 --ext .ts,.tsx app lib",
-        "lint:fix": "eslint --max-warnings 0 --fix --ext .ts,.tsx app lib",
+        "lint": "eslint --max-warnings 0 --ext .ts,.tsx app",
+        "lint:fix": "eslint --max-warnings 0 --fix --ext .ts,.tsx app",
         "check-types": "tsc --noEmit"
     },
     "dependencies": {
         "@repo/ui": "*",
-        "better-auth": "^1.4.18",
+        "@repo/auth": "*",
         "next": "16.0.10",
         "react": "^19.1.0",
         "react-dom": "^19.1.0"

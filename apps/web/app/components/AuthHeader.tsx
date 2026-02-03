@@ -2,7 +2,8 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
-import { useSession, signOut } from "@web/lib/auth-client"
+// import { useSession, signOut } from "@web/lib/auth-client"
+import { useSession, signOut } from "@repo/auth/client/next"
 import styles from "./AuthHeader.module.css"
 
 /**

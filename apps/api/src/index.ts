@@ -1,7 +1,8 @@
 import { Hono } from 'hono'
 import { CONSTANT } from "@repo/constants";
 import { logger } from "hono/logger";
-import { auth } from "@api/lib/auth";
+import { auth } from "@repo/auth/server";
+
 
 const app = new Hono().basePath("/api")
 app.use(logger())

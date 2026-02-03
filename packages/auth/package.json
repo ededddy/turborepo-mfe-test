@@ -1,0 +1,35 @@
+{
+    "name": "@repo/auth",
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "dev": "tsc --watch",
+        "check-types": "tsc --noEmit",
+        "lint": "eslint . --max-warnings 0"
+    },
+    "exports": {
+        "./server": {
+            "types": "./dist/server.d.ts",
+            "default": "./dist/server.js"
+        },
+        "./client/react": {
+            "types": "./dist/react-client.d.ts",
+            "default": "./dist/react-client.js"
+        },
+        "./client/next": {
+            "types": "./dist/next-client.d.ts",
+            "default": "./dist/next-client.js"
+        }
+    },
+    "dependencies": {
+        "better-auth": "^1.4.18"
+    },
+    "devDependencies": {
+        "better-auth": "^1.4.18",
+        "@repo/typescript-config": "workspace:*",
+        "@repo/eslint-config": "workspace:*",
+        "eslint": "^9.39.2",
+        "typescript": "latest",
+        "@types/bun": "latest"
+    }
+}

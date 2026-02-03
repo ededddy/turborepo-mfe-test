@@ -3,7 +3,8 @@
 import React, { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { signIn } from "@web/lib/auth-client"
+//import { signIn } from "@web/lib/auth-client"
+import { signIn } from "@repo/auth/client/next"
 import styles from "../styles/auth.module.css"
 
 /**

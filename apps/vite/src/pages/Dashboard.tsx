@@ -1,7 +1,8 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Dashboard.module.css"
-import { useSession, signOut } from "../lib/auth-client"
+//import { useSession, signOut } from "../lib/auth-client"
+import { useSession, signOut } from "@repo/auth/client/react"
 
 /**
  * Dashboard Page - React Router Component
@@ -74,79 +75,79 @@ export function Dashboard() {
 
     return (
         <main className={styles.dashboard}>
-                <div className="container">
-                    <div className={styles.dashboardContent}>
-                        <div className={styles.welcomeSection}>
-                            <div className={styles.badge}>Authenticated</div>
-                            <h1 className={styles.dashboardTitle}>Welcome to Your Dashboard</h1>
-                            <p className={styles.dashboardSubtitle}>
-                                You have successfully authenticated and accessed a protected route.
-                            </p>
-                        </div>
+            <div className="container">
+                <div className={styles.dashboardContent}>
+                    <div className={styles.welcomeSection}>
+                        <div className={styles.badge}>Authenticated</div>
+                        <h1 className={styles.dashboardTitle}>Welcome to Your Dashboard</h1>
+                        <p className={styles.dashboardSubtitle}>
+                            You have successfully authenticated and accessed a protected route.
+                        </p>
+                    </div>
 
-                        <div className={styles.infoGrid}>
-                            {/* Session Info Card */}
-                            <div className={styles.infoCard}>
-                                <h2 className={styles.cardTitle}>Session Information</h2>
-                                <div className={styles.infoRow}>
-                                    <span className={styles.infoLabel}>Status:</span>
-                                    <span className={`${styles.infoValue} ${styles.infoValueSuccess}`}>Active</span>
-                                </div>
-                                <div className={styles.infoRow}>
-                                    <span className={styles.infoLabel}>Token:</span>
-                                    <span className={`${styles.infoValue} ${styles.infoValueMono}`}>
-                                        {session.session.token.substring(0, 20)}...
-                                    </span>
-                                </div>
-                                <div className={styles.infoRow}>
-                                    <span className={styles.infoLabel}>Protected:</span>
-                                    <span className={`${styles.infoValue} ${styles.infoValueSuccess}`}>Yes</span>
-                                </div>
+                    <div className={styles.infoGrid}>
+                        {/* Session Info Card */}
+                        <div className={styles.infoCard}>
+                            <h2 className={styles.cardTitle}>Session Information</h2>
+                            <div className={styles.infoRow}>
+                                <span className={styles.infoLabel}>Status:</span>
+                                <span className={`${styles.infoValue} ${styles.infoValueSuccess}`}>Active</span>
                             </div>
-
-                            {/* Features Card */}
-                            <div className={styles.infoCard}>
-                                <h2 className={styles.cardTitle}>Available Features</h2>
-                                <ul className={styles.featureList}>
-                                    <li>✓ Microfrontend management</li>
-                                    <li>✓ Deployment monitoring</li>
-                                    <li>✓ Team collaboration</li>
-                                    <li>✓ Performance analytics</li>
-                                    <li>✓ API key management</li>
-                                </ul>
+                            <div className={styles.infoRow}>
+                                <span className={styles.infoLabel}>Token:</span>
+                                <span className={`${styles.infoValue} ${styles.infoValueMono}`}>
+                                    {session.session.token.substring(0, 20)}...
+                                </span>
                             </div>
-
-                            {/* Next Steps Card */}
-                            <div className={styles.infoCard}>
-                                <h2 className={styles.cardTitle}>Next Steps</h2>
-                                <div className={styles.actionList}>
-                                    <a href="/docs" className={styles.actionLink}>
-                                        <span>→ Read the documentation</span>
-                                    </a>
-                                    <a href="/settings" className={styles.actionLink}>
-                                        <span>→ Configure your profile</span>
-                                    </a>
-                                    <a href="/api/keys" className={styles.actionLink}>
-                                        <span>→ Generate API keys</span>
-                                    </a>
-                                </div>
+                            <div className={styles.infoRow}>
+                                <span className={styles.infoLabel}>Protected:</span>
+                                <span className={`${styles.infoValue} ${styles.infoValueSuccess}`}>Yes</span>
                             </div>
                         </div>
 
-                        {/* Logout Section */}
-                        <div className={styles.logoutSection}>
-                            <p className={styles.logoutText}>
-                                Ready to leave? Click the button below to securely log out.
-                            </p>
-                            <button
-                                onClick={handleLogout}
-                                className={styles.logoutButton}
-                            >
-                                Logout
-                            </button>
+                        {/* Features Card */}
+                        <div className={styles.infoCard}>
+                            <h2 className={styles.cardTitle}>Available Features</h2>
+                            <ul className={styles.featureList}>
+                                <li>✓ Microfrontend management</li>
+                                <li>✓ Deployment monitoring</li>
+                                <li>✓ Team collaboration</li>
+                                <li>✓ Performance analytics</li>
+                                <li>✓ API key management</li>
+                            </ul>
+                        </div>
+
+                        {/* Next Steps Card */}
+                        <div className={styles.infoCard}>
+                            <h2 className={styles.cardTitle}>Next Steps</h2>
+                            <div className={styles.actionList}>
+                                <a href="/docs" className={styles.actionLink}>
+                                    <span>→ Read the documentation</span>
+                                </a>
+                                <a href="/settings" className={styles.actionLink}>
+                                    <span>→ Configure your profile</span>
+                                </a>
+                                <a href="/api/keys" className={styles.actionLink}>
+                                    <span>→ Generate API keys</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
+
+                    {/* Logout Section */}
+                    <div className={styles.logoutSection}>
+                        <p className={styles.logoutText}>
+                            Ready to leave? Click the button below to securely log out.
+                        </p>
+                        <button
+                            onClick={handleLogout}
+                            className={styles.logoutButton}
+                        >
+                            Logout
+                        </button>
+                    </div>
                 </div>
-            </main>
+            </div>
+        </main>
     )
 }

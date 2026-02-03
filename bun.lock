@@ -14,6 +14,7 @@
     "apps/api": {
       "name": "api",
       "dependencies": {
+        "@repo/auth": "workspace:*",
         "@repo/constants": "workspace:*",
         "better-auth": "^1.4.18",
         "better-sqlite3": "^12.6.2",
@@ -49,7 +50,7 @@
       "name": "admin",
       "version": "0.0.0",
       "dependencies": {
-        "better-auth": "^1.4.18",
+        "@repo/auth": "workspace:*",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
         "react-router-dom": "^7.9.4",
@@ -71,8 +72,8 @@
       "name": "web",
       "version": "0.1.0",
       "dependencies": {
+        "@repo/auth": "*",
         "@repo/ui": "*",
-        "better-auth": "^1.4.18",
         "next": "16.0.10",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
@@ -85,6 +86,20 @@
         "@types/react-dom": "19.1.1",
         "eslint": "^9.34.0",
         "typescript": "5.9.2",
+      },
+    },
+    "packages/auth": {
+      "name": "@repo/auth",
+      "dependencies": {
+        "better-auth": "^1.4.18",
+      },
+      "devDependencies": {
+        "@repo/eslint-config": "workspace:*",
+        "@repo/typescript-config": "workspace:*",
+        "@types/bun": "latest",
+        "better-auth": "^1.4.18",
+        "eslint": "^9.39.2",
+        "typescript": "latest",
       },
     },
     "packages/constants": {
@@ -299,6 +314,8 @@
     "@nodelib/fs.stat": ["@nodelib/fs.stat@2.0.5", "", {}, "sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A=="],
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
+
+    "@repo/auth": ["@repo/auth@workspace:packages/auth"],
 
     "@repo/constants": ["@repo/constants@workspace:packages/constants"],
 
@@ -991,6 +1008,8 @@
     "@eslint-community/eslint-utils/eslint-visitor-keys": ["eslint-visitor-keys@3.4.3", "", {}, "sha512-wpc+LXeiyiisxPlEkUzU6svyS1frIO3Mgxj1fdy7Pm8Ygzguax2N3Fa/D/ag1WqbOprdI+uY6wMUl8/a2G+iag=="],
 
     "@eslint/eslintrc/globals": ["globals@14.0.0", "", {}, "sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ=="],
+
+    "@repo/auth/typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
 
     "@repo/constants/typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
 

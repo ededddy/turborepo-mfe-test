@@ -1,8 +1,9 @@
 import { useEffect } from "react"
-import { useSession } from "../lib/auth-client"
+// import { useSession } from "../lib/auth-client"
+import { useSession } from "@repo/auth/client/react"
 
 interface ProtectedRouteProps {
-  children: React.ReactNode
+    children: React.ReactNode
 }
 
 /**
@@ -27,62 +28,62 @@ interface ProtectedRouteProps {
  * ```
  */
 export function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const { data: session, isPending } = useSession()
-  const proxyUrl = import.meta.env.VITE_PROXY_URL || "http://localhost:3024"
+    const { data: session, isPending } = useSession()
+    const proxyUrl = import.meta.env.VITE_PROXY_URL || "http://localhost:3024"
 
-  useEffect(() => {
-    if (!isPending && !session) {
-      // Redirect to Next.js web app login page via proxy
-      window.location.replace(`${proxyUrl}/login`)
-    }
-  }, [session, isPending, proxyUrl])
+    useEffect(() => {
+        if (!isPending && !session) {
+            // Redirect to Next.js web app login page via proxy
+            window.location.replace(`${proxyUrl}/login`)
+        }
+    }, [session, isPending, proxyUrl])
 
-  if (isPending) {
-    return (
-      <div style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        background: "var(--color-bg, #0a0a0a)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        gap: "var(--space-lg, 2rem)",
-        zIndex: 9999
-      }}>
-        <div style={{
-          width: "48px",
-          height: "48px",
-          border: "3px solid var(--color-border, #262626)",
-          borderTopColor: "var(--color-primary, #3b82f6)",
-          borderRadius: "0",
-          animation: "spin 0.8s linear infinite"
-        }} />
-        <p style={{
-          fontFamily: "var(--font-mono, monospace)",
-          fontSize: "0.875rem",
-          color: "var(--color-muted, #737373)",
-          textTransform: "uppercase",
-          letterSpacing: "0.1em",
-          margin: 0
-        }}>
-          Loading...
-        </p>
-        <style>{`
+    if (isPending) {
+        return (
+            <div style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: "var(--color-bg, #0a0a0a)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                gap: "var(--space-lg, 2rem)",
+                zIndex: 9999
+            }}>
+                <div style={{
+                    width: "48px",
+                    height: "48px",
+                    border: "3px solid var(--color-border, #262626)",
+                    borderTopColor: "var(--color-primary, #3b82f6)",
+                    borderRadius: "0",
+                    animation: "spin 0.8s linear infinite"
+                }} />
+                <p style={{
+                    fontFamily: "var(--font-mono, monospace)",
+                    fontSize: "0.875rem",
+                    color: "var(--color-muted, #737373)",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    margin: 0
+                }}>
+                    Loading...
+                </p>
+                <style>{`
           @keyframes spin {
             to { transform: rotate(360deg); }
           }
         `}</style>
-      </div>
-    )
-  }
+            </div>
+        )
+    }
 
-  if (!session) {
-    return null // Will redirect via useEffect
-  }
+    if (!session) {
+        return null // Will redirect via useEffect
+    }
 
-  return <>{children}</>
+    return <>{children}</>
 }

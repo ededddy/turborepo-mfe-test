@@ -12,9 +12,6 @@
             "@web/*": [
                 "./app/*"
             ],
-            "@web/lib/*": [
-                "./lib/*"
-            ],
             "@web/public/*": [
                 "./public/*"
             ],

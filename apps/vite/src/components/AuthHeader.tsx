@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import { useSession, signOut } from "../lib/auth-client"
+//import { useSession, signOut } from "../lib/auth-client"
+import { useSession, signOut } from "@repo/auth/client/react"
 import styles from "./AuthHeader.module.css"
 
 /**

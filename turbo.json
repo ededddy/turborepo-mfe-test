@@ -31,6 +31,8 @@
         }
     },
     "globalEnv": [
-        "TURBO_MFE_PORT"
+        "TURBO_MFE_PORT",
+        "NEXT_PUBLIC_AUTH_URL",
+        "VITE_AUTH_URL"
     ]
 }
